@@ -1,4 +1,4 @@
-set nocompatible "vi殿御感を解除
+set nocompatible "vi互換性を解除
 set encoding=utf-8
 scriptencoding utf-8
 filetype plugin indent on
@@ -29,7 +29,9 @@ set smartcase
 set autoindent "オートインデントの設定
 set ruler "カーソルが何行目何列か表示
 set number "行番号の表示
-set wildmenu "コマンドライン保管が拡張モードで行われる
+set cursorline "カーソルがあるラインをハイライト
+set wildmenu "コマンドライン保管が拡張モードで行われる :で探し始める
+set history=5000 "保存するコマンド履歴数
 set showcmd "コマンドを最下行に表示
 syntax on "構文ごとに色分け
 set list "ラインの終わりを表示
@@ -40,4 +42,19 @@ hi ZenkakuSpace cterm=underline ctermfg=lightblue ctermbg=white
 match ZenkakuSpace /　/
 set nowrap "行を折り返さない
 set showmatch "対応したカッコをハイライト
+source $VIMRUNTIME/macros/matchit.vim "vimの%を拡張
 set clipboard=unnamed
+
+"クリップボードから貼り付けで自動インデント無効
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
