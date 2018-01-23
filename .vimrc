@@ -1,4 +1,4 @@
-set nocompatible "vi殿御感を解除
+set nocompatible "vi互換性を解除
 set encoding=utf-8
 scriptencoding utf-8
 filetype plugin indent on
