@@ -6,6 +6,8 @@ filetype plugin indent on
 set fileencoding=utf-8 "ファイル保存時のエンコード設定
 set fileformats=unix,mac,dos "改行コードの自動判別
 "キー割り当て
+""キーマッピング
+"nnoremap :tree<CR> :NERDTreeToggle<CR>
 ""tabキーの設定
 set expandtab "tabキーをspaceに変更
 set tabstop=4 "既存のファイルのtabキーを置き換える空白数
@@ -33,7 +35,12 @@ set cursorline "カーソルがあるラインをハイライト
 set wildmenu "コマンドライン保管が拡張モードで行われる :で探し始める
 set history=5000 "保存するコマンド履歴数
 set showcmd "コマンドを最下行に表示
+set showmode "現在のモードを表示
+set statusline+=%<%F
+set laststatus=2 "ステータスラインを常に表示
 syntax on "構文ごとに色分け
+filetype plugin on
+filetype indent on
 set list "ラインの終わりを表示
 " タブ、行末スペースなどを可視化した時に表示する記号
 set listchars=eol:$,tab:>\-,trail:-,extends:>,precedes:<,nbsp:%
@@ -58,3 +65,70 @@ if &term =~ "xterm"
 
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
+
+"""""""""""""""""""""""""""""""""""
+"color schemeのためのreset augroup"
+"""""""""""""""""""""""""""""""""""
+augroup MyAutoCmd
+autocmd!
+augroup END
+
+""""""""""""""""""""""""
+"deinの自動インストール"
+""""""""""""""""""""""""
+"事前に以下を実行する
+"$ mkdir -p  ~/.vim/dein
+"cd ~/.vim/dein
+"$ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+"$ sh ./installer.sh ~/.vim/dein
+"
+let s:dein_dir=expand('~/.vim/dein')
+let s:dein_repo_dir=s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+endif
+
+" Required:
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+" Required:
+call dein#begin(s:dein_dir)
+
+" Let dein manage dein
+" Required:
+"call dein#add('Shougo/dein.vim')
+
+let g:rc_dir = expand('~/.vim/rc')
+let s:toml = g:rc_dir . '/dein.toml'
+let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+
+call dein#load_toml(s:toml,      {'lazy': 0})
+call dein#load_toml(s:lazy_toml, {'lazy': 1})
+" Add or remove your plugins here:
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
+"call dein#add('Shougo/neocomplete.vim')
+"call dein#add('scrooloose/nerdtree')
+
+" You can specify revision/branch/tag.
+"call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" Required:
+call dein#end()
+call dein#save_state()
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+""""""""""""""""""
+"Deinの設定終わり"
+""""""""""""""""""
