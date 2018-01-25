@@ -35,7 +35,12 @@ set cursorline "カーソルがあるラインをハイライト
 set wildmenu "コマンドライン保管が拡張モードで行われる :で探し始める
 set history=5000 "保存するコマンド履歴数
 set showcmd "コマンドを最下行に表示
+set showmode "現在のモードを表示
+set statusline+=%<%F
+set laststatus=2 "ステータスラインを常に表示
 syntax on "構文ごとに色分け
+filetype plugin on
+filetype indent on
 set list "ラインの終わりを表示
 " タブ、行末スペースなどを可視化した時に表示する記号
 set listchars=eol:$,tab:>\-,trail:-,extends:>,precedes:<,nbsp:%
