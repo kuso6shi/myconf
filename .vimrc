@@ -61,6 +61,13 @@ if &term =~ "xterm"
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
+"""""""""""""""""""""""""""""""""""
+"color schemeのためのreset augroup"
+"""""""""""""""""""""""""""""""""""
+augroup MyAutoCmd
+autocmd!
+augroup END
+
 """"""""""""""""""""""""
 "deinの自動インストール"
 """"""""""""""""""""""""
@@ -89,20 +96,26 @@ call dein#begin(s:dein_dir)
 
 " Let dein manage dein
 " Required:
-call dein#add('Shougo/dein.vim')
+"call dein#add('Shougo/dein.vim')
 
+let g:rc_dir = expand('~/.vim/rc')
+let s:toml = g:rc_dir . '/dein.toml'
+let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+
+call dein#load_toml(s:toml,      {'lazy': 0})
+call dein#load_toml(s:lazy_toml, {'lazy': 1})
 " Add or remove your plugins here:
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('scrooloose/nerdtree')
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
+"call dein#add('Shougo/neocomplete.vim')
+"call dein#add('scrooloose/nerdtree')
 
 " You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+"call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 " Required:
 call dein#end()
-
+call dein#save_state()
 " Required:
 filetype plugin indent on
 syntax enable
