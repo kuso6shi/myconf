@@ -1,0 +1,7 @@
+/*
+*.swp
+!.vimrc
+!/.vim/
+/.vim/*
+!/.vim/rc/
+!/.gitignore
