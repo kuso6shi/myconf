@@ -3,5 +3,6 @@
 !.vimrc
 !/.vim/
 /.vim/*
-!/.vim/rc/
+!/.vim/rc
+!/.vim/colors
 !/.gitignore

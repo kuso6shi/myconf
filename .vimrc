@@ -7,7 +7,14 @@ set fileencoding=utf-8 "ファイル保存時のエンコード設定
 set fileformats=unix,mac,dos "改行コードの自動判別
 "キー割り当て
 ""キーマッピング
-"nnoremap :tree<CR> :NERDTreeToggle<CR>
+"nnoremap :ddtree<CR> :NERDTreeToggle<CR>
+inoremap <c-e> <Esc>
+noremap <Space>r :
+nnoremap <Space>t :NERDTree<CR>
+"括弧の補完
+inoremap {<CR> {}<Left><CR><ESC><S-o>
+inoremap [<CR> []<Left><CR><ESC><S-o>
+inoremap (<CR> ()<Left><CR><ESC><S-o>
 ""tabキーの設定
 set expandtab "tabキーをspaceに変更
 set tabstop=4 "既存のファイルのtabキーを置き換える空白数
@@ -20,14 +27,14 @@ set backspace=indent,eol,start
 "システム関係
 set updatetime=0 "swap作成までの時間
 set whichwrap=b,s,h,l,<,>,[,] "行をまたいで移動可能
-set t_Co=256 "256食対応
-
+"set t_Co=256 "256食対応
 "検索
 set hlsearch "検索結果をハイライト
 set ignorecase "検索結果の大文字小文字を区別しない
 set smartcase
-
+syntax on 
 "表示・文字関係
+colorscheme molokai
 set autoindent "オートインデントの設定
 set ruler "カーソルが何行目何列か表示
 set number "行番号の表示
@@ -38,7 +45,6 @@ set showcmd "コマンドを最下行に表示
 set showmode "現在のモードを表示
 set statusline+=%<%F
 set laststatus=2 "ステータスラインを常に表示
-syntax on "構文ごとに色分け
 filetype plugin on
 filetype indent on
 set list "ラインの終わりを表示
@@ -66,12 +72,13 @@ if &term =~ "xterm"
     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 endif
 
+
 """""""""""""""""""""""""""""""""""
 "color schemeのためのreset augroup"
 """""""""""""""""""""""""""""""""""
-augroup MyAutoCmd
-autocmd!
-augroup END
+"augroup MyAutoCmd
+"autocmd!
+"augroup END
 
 """"""""""""""""""""""""
 "deinの自動インストール"
@@ -110,10 +117,6 @@ let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 call dein#load_toml(s:toml,      {'lazy': 0})
 call dein#load_toml(s:lazy_toml, {'lazy': 1})
 " Add or remove your plugins here:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
-"call dein#add('Shougo/neocomplete.vim')
-"call dein#add('scrooloose/nerdtree')
 
 " You can specify revision/branch/tag.
 "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -123,8 +126,6 @@ call dein#end()
 call dein#save_state()
 " Required:
 filetype plugin indent on
-syntax enable
-
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
