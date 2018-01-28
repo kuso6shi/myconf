@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-[[plugins]]
+[[plugins]] #カラーコード確認用 
 repo = 'gorodinskiy/vim-coloresque'
 #[[plugins]]#カラースキーム用*ただし、個々で設定するとvim-coloresqueがかき消されるので注意!
 #repo = 'tomasr/molokai' #jacoborus/tender.vim
@@ -15,5 +15,11 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 [[plugins]] #ステータスライン強化
 repo = 'itchyny/lightline.vim'
-[[plugins]]
+[[plugins]] #ファイルツリー
 repo = 'scrooloose/nerdtree'
+[[plugins]] #コメントアウト用プラグイン <Leader>c<space>によりコメントアウト
+repo = 'scrooloose/nerdcommenter'
+hook_add  = '''
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+'''

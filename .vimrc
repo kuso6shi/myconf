@@ -7,14 +7,22 @@ set fileencoding=utf-8 "ファイル保存時のエンコード設定
 set fileformats=unix,mac,dos "改行コードの自動判別
 "キー割り当て
 ""キーマッピング
+let mapleader=","
 "nnoremap :ddtree<CR> :NERDTreeToggle<CR>
 inoremap <c-e> <Esc>
-noremap <Space>r :
+"Escをjjに変更
+inoremap jj <Esc>
+":をjに変更
+noremap <Space>j :
+"NERDTreeをスペース+tで起動
 nnoremap <Space>t :NERDTree<CR>
+"ハイライトを消すをEsc２回連打に変更
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
 "括弧の補完
-inoremap {<CR> {}<Left><CR><ESC><S-o>
-inoremap [<CR> []<Left><CR><ESC><S-o>
-inoremap (<CR> ()<Left><CR><ESC><S-o>
+"プラグインで導入
+"inoremap {<CR> {}<Left><CR><ESC><S-o>
+"inoremap [<CR> []<Left><CR><ESC><S-o>
+"inoremap (<CR> ()<Left><CR><ESC><S-o>
 ""tabキーの設定
 set expandtab "tabキーをspaceに変更
 set tabstop=4 "既存のファイルのtabキーを置き換える空白数
