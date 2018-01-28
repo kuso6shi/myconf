@@ -17,6 +17,9 @@ on_ft = 'toml'
 repo = 'itchyny/lightline.vim'
 [[plugins]] #ファイルツリー
 repo = 'scrooloose/nerdtree'
+hook_add = '''
+let g:NERDTreeShowHidden = 1
+'''
 [[plugins]] #コメントアウト用プラグイン <Leader>c<space>によりコメントアウト
 repo = 'scrooloose/nerdcommenter'
 hook_add  = '''

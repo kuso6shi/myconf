@@ -16,6 +16,14 @@ inoremap jj <Esc>
 noremap <Space>j :
 "NERDTreeをスペース+tで起動
 nnoremap <Space>t :NERDTree<CR>
+"水平分割
+noremap sp :split<CR>
+noremap sv :vsplit<CR>
+noremap sh <c-w>h
+noremap sj <c-w>j
+noremap sk <c-w>k
+noremap sl <c-w>l
+noremap sc <c-w>c
 "ハイライトを消すをEsc２回連打に変更
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 "括弧の補完
@@ -53,6 +61,7 @@ set showcmd "コマンドを最下行に表示
 set showmode "現在のモードを表示
 set statusline+=%<%F
 set laststatus=2 "ステータスラインを常に表示
+set title
 filetype plugin on
 filetype indent on
 set list "ラインの終わりを表示
