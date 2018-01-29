@@ -22,7 +22,6 @@ let g:NERDTreeShowHidden = 1
 '''
  [[plugins]] #コメントアウト用プラグイン <Leader>c<space>によりコメントアウト
  repo = 'scrooloose/nerdcommenter'
- hook_add  = '''
- let g:NERDDefaultAlign = 'left'
- let g:NERDSpaceDelims = 1
+  hook_add  = '''
+  let g:NERDDefaultAlign = 'left'
  '''
