@@ -48,8 +48,9 @@ set whichwrap=b,s,h,l,<,>,[,] "行をまたいで移動可能
 set hlsearch "検索結果をハイライト
 set ignorecase "検索結果の大文字小文字を区別しない
 set smartcase
-syntax on 
+syntax on
 "表示・文字関係
+"colorschmeは~/.vim/colors/を作成しcolorschemeを格納しておく
 colorscheme molokai
 set autoindent "オートインデントの設定
 set ruler "カーソルが何行目何列か表示
@@ -126,7 +127,7 @@ call dein#begin(s:dein_dir)
 " Let dein manage dein
 " Required:
 "call dein#add('Shougo/dein.vim')
-
+let g:neosnippet#snippets_directory = '~/.vim/snippets/'
 let g:rc_dir = expand('~/.vim/rc')
 let s:toml = g:rc_dir . '/dein.toml'
 let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
