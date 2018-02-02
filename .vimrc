@@ -97,7 +97,12 @@ endif
 "augroup MyAutoCmd
 "autocmd!
 "augroup END
-
+"""""""""""""
+"emmetの設定"
+"""""""""""""
+autocmd FileType html imap <buffer><expr><tab>
+    \ emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+    \ "\<tab>"
 """"""""""""""""""""""""
 "deinの自動インストール"
 """"""""""""""""""""""""
